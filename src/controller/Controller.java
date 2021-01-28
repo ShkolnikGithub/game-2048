@@ -1,3 +1,9 @@
+package controller;
+
+import model.Model;
+import model.Tile;
+import view.View;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

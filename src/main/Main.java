@@ -1,3 +1,8 @@
+package main;
+
+import controller.Controller;
+import model.Model;
+
 import javax.swing.*;
 
 public class Main {

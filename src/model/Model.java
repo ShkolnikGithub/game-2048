@@ -1,3 +1,8 @@
+package model;
+
+import controller.Move;
+import controller.MoveEfficiency;
+
 import java.util.*;
 
 public class Model {
@@ -6,8 +11,8 @@ public class Model {
     private Stack<Tile[][]> previousStates = new Stack<>();
     private Stack<Integer> previousScores = new Stack<>();
     private boolean isSaveNeeded = true;
-    protected int score;
-    protected int maxTile;
+    public int score;
+    public int maxTile;
 
     public Model() {
         resetGameTiles();
@@ -33,7 +38,7 @@ public class Model {
         return emptyTiles;
     }
 
-    protected void resetGameTiles() {
+    public void resetGameTiles() {
         score = 0;
         maxTile = 0;
         for (int i = 0; i < gameTiles.length; i++) {
@@ -45,7 +50,7 @@ public class Model {
         addTile();
     }
 
-    boolean compressTiles(Tile[] tiles) {
+    public boolean compressTiles(Tile[] tiles) {
         boolean change = false;
         for (int k = 0; k < tiles.length; k++) {
             for (int i = 0; i < tiles.length - 1; i++) {
@@ -62,7 +67,7 @@ public class Model {
         return change;
     }
 
-    boolean mergeTiles(Tile[] tiles) {
+    public boolean mergeTiles(Tile[] tiles) {
         boolean change = false;
         for (int i = 0; i < tiles.length - 1; i++) {
             if (tiles[i].value == tiles[i + 1].value && tiles[i].value != 0) {
@@ -82,7 +87,7 @@ public class Model {
         return change;
     }
 
-    protected void left() {
+    public void left() {
         boolean change = false;
 
         if (isSaveNeeded) {
@@ -102,7 +107,7 @@ public class Model {
         isSaveNeeded = true;
     }
 
-    protected void right() {
+    public void right() {
         boolean change = false;
 
         saveState(gameTiles);
@@ -124,7 +129,7 @@ public class Model {
         rotationClockwise(gameTiles);
     }
 
-    protected void up() {
+    public void up() {
         boolean change = false;
 
         saveState(gameTiles);
@@ -146,7 +151,7 @@ public class Model {
         rotationClockwise(gameTiles);
     }
 
-    protected void down() {
+    public void down() {
         boolean change = false;
 
         saveState(gameTiles);
@@ -168,7 +173,7 @@ public class Model {
         }
     }
 
-    protected void rotationClockwise(Tile[][] tiles) {
+    public void rotationClockwise(Tile[][] tiles) {
         Tile[][] secondArray = new Tile[FIELD_WIDTH][FIELD_WIDTH];
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
